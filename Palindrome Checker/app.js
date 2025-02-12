@@ -25,8 +25,11 @@ const Replace = (text) => {
 function Miror(){
     for (let i = 0 ; i > SpaceChars ; i++){
         let lastIndex = lowerCaseUserText.length[-1]
-        
+
          
     }
 }
 
+function emty(){
+    
+}
