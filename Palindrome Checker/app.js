@@ -1,6 +1,6 @@
 
-const btn = document.getElementById(`btn`);
-const textToShow = document.getElementById(`resultat`);
+const btn = document.getElementById(`check-btn`);
+const textToShow = document.getElementById(`result`);
 
 let resultat = "";
 let miror = "";
@@ -41,11 +41,11 @@ function Miror(test){
 }
 
 btn.addEventListener("click", function(){
-    let textinput = document.getElementById(`text`).value.trim();
+    let textinput = document.getElementById(`text-input`).value.trim();
     let theMirorOfTheText = document.getElementById(`miror`);
 
     if(textinput == ""){
-        textToShow.textContent = `Please Enter a Word`;
+        alert("Please input a value");
     }else{
     const TextTomakeitlower = lowerCaseUserText(textinput);
     Miror(TextTomakeitlower);
