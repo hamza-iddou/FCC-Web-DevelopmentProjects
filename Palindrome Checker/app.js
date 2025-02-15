@@ -1,5 +1,5 @@
-//const txt = document.getElementById(`text`).value;
-//const btn = document.getElementById(`btn`);
+const textinput = document.getElementById(`text`).value;
+const btn = document.getElementById(`btn`);
 //const resultat = document.getElementById(`resultat`)
 
 let resultat = "";
@@ -18,6 +18,14 @@ const lowerCaseUserText = (chars) => {
 const test = lowerCaseUserText("tot");
 
 
+function check(x , y){
+    if(x == y){
+        return true ;
+    }else{
+        return false;
+    }
+}
+
 function Miror(){
     miror = "";
     for (let i = test.length - 1  ; i >= 0 ; i--){
@@ -25,7 +33,9 @@ function Miror(){
         let lastIndex = AloneChar[AloneChar.length - 1];
         miror += lastIndex;
     }
-    console.log(miror);
+    check(miror , test);
 }
+Miror();
 
-Miror()
+
+
