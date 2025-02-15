@@ -1,13 +1,13 @@
 const textinput = document.getElementById(`text`).value;
 const btn = document.getElementById(`btn`);
-//const resultat = document.getElementById(`resultat`)
+const textToShow = document.getElementById(`resultat`);
 
 let resultat = "";
 let miror = "";
 
 
 const lowerCaseUserText = (chars) => {
-    let resultat ="";
+    resultat ="";
     for (let char of chars){
         resultat += char.toLowerCase()
     }
@@ -15,10 +15,10 @@ const lowerCaseUserText = (chars) => {
 };
 
 
-const test = lowerCaseUserText("tot");
+const TextTomakeitlower = lowerCaseUserText(textinput);
 
 
-function check(x , y){
+const  check = (x , y) => {
     if(x == y){
         return true ;
     }else{
@@ -26,7 +26,7 @@ function check(x , y){
     }
 }
 
-function Miror(){
+function Miror(test){
     miror = "";
     for (let i = test.length - 1  ; i >= 0 ; i--){
         let AloneChar = test.slice(0, i+1);
@@ -34,8 +34,20 @@ function Miror(){
         miror += lastIndex;
     }
     check(miror , test);
+    if (check){
+        textToShow.textContent = `The Word is Palindrome`;
+
+    }else{
+        textToShow.textContent = `The Word is'nt Palindrome`;
+    }
 }
-Miror();
+
+
+btn.addEventListener("click", function(){
+    Miror(TextTomakeitlower);
+});
+
+
 
 
 
