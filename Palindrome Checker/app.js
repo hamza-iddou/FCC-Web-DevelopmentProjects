@@ -38,9 +38,7 @@ function Miror(test){
     }else{
         textToShow.textContent = `The Word is'nt Palindrome`;
     }
-    
 }
-
 
 btn.addEventListener("click", function(){
     let textinput = document.getElementById(`text`).value.trim();
