@@ -1,11 +1,9 @@
 const btn = document.getElementById(`check-btn`);
 const textToShow = document.getElementById(`result`);
 
-
 let resultat = "";
 let miror = "";
 let clone = "";
-
 
 const lowerCaseUserText = (chars) => {
 
