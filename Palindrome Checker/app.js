@@ -9,9 +9,12 @@ let miror = "";
 const lowerCaseUserText = (chars) => {
     resultat ="";
     for (let char of chars){
-        resultat += char.toLowerCase()
+    if((char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122) || (char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57)){
+        resultat += char;
     }
-    return resultat
+    }
+    return resultat;
+    
 };
 
 const  check = (x , y) => {
@@ -27,21 +30,20 @@ function Miror(test){
     for (let i = test.length - 1  ; i >= 0 ; i--){
         let AloneChar = test.slice(0, i+1);
         let lastIndex = AloneChar[AloneChar.length - 1];
-        if( lastIndex.charCodeAt(0) >= 97 && lastIndex.charCodeAt(0) <= 122){
         miror += lastIndex;
-        }
     }
     
     if (check(miror , test)){
-        textToShow.textContent = `The Word is Palindrome`;
+        textToShow.textContent = `${test} is a palindrome`;
 
     }else{
-        textToShow.textContent = `The Word is'nt Palindrome`;
+        textToShow.textContent = `${test} is not a palindrome`;
     }
 }
 
 btn.addEventListener("click", function(){
-    let textinput = document.getElementById(`text-input`).value.trim();
+    let cleartextinput = document.getElementById(`text-input`).value;
+    let textinput = document.getElementById(`text-input`).value.trim().toLowerCase();
     let theMirorOfTheText = document.getElementById(`miror`);
 
     if(textinput == ""){
