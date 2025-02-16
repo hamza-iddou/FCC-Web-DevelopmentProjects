@@ -1,20 +1,24 @@
-
 const btn = document.getElementById(`check-btn`);
 const textToShow = document.getElementById(`result`);
 
+
 let resultat = "";
 let miror = "";
+let clone = "";
 
 
 const lowerCaseUserText = (chars) => {
+
     resultat ="";
+    clone = "";
+
     for (let char of chars){
-    if((char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122) || (char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57)){
-        resultat += char;
+        clone += char;    
+    if(/[a-zA-Z0-9]/.test(char)){
+        resultat += char.toLowerCase();
     }
     }
-    return resultat;
-    
+    return resultat;    
 };
 
 const  check = (x , y) => {
@@ -23,29 +27,26 @@ const  check = (x , y) => {
     }else{
         return false;
     }   
-}
+};
 
 function Miror(test){
     miror = "";
     for (let i = test.length - 1  ; i >= 0 ; i--){
-        let AloneChar = test.slice(0, i+1);
+        let AloneChar = test.slice(0, i + 1);
         let lastIndex = AloneChar[AloneChar.length - 1];
         miror += lastIndex;
     }
-    
-    if (check(miror , test)){
-        textToShow.textContent = `${test} is a palindrome`;
-
+    if (check(miror , resultat)){
+        textToShow.textContent = `${clone} is a palindrome`;
     }else{
-        textToShow.textContent = `${test} is not a palindrome`;
+        textToShow.textContent = `${clone} is not a palindrome`;
     }
 }
 
 btn.addEventListener("click", function(){
-    let cleartextinput = document.getElementById(`text-input`).value;
-    let textinput = document.getElementById(`text-input`).value.trim().toLowerCase();
-    let theMirorOfTheText = document.getElementById(`miror`);
 
+    let textinput = document.getElementById(`text-input`).value;
+    let theMirorOfTheText = document.getElementById(`miror`);
     if(textinput == ""){
         alert("Please input a value");
     }else{
