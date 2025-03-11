@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container input{
+    outline: none;
+    font-size: 2rem;
+    padding: 10px;
+    border: none;
+    background-color: rgba(192, 192, 192, 0.144);
+    color: white;
+}
+.container button{
+    font-size: 2rem;
+    text-align: center;
+    margin: 30px 0px;
+    font-weight: bold;
+    background-color: chocolate;
+    border:none;
+    cursor: pointer;
+}
+
+.output{
+    border: none;
+    background-color: rgba(255, 0, 0, 0.534);
+    
+}
+
+.output p{
+    font-size: 3rem;
+    padding: 0px 20px;
+    display: none;
+}
