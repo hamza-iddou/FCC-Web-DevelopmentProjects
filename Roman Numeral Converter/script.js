@@ -7,47 +7,51 @@ let result = [];
 
 
 
-const decimals = (x)=>{
-    result = [];
-    for (let i =0; i <= x.length ; i++){
-        switch (x[i]){
-            case x[i] == 1:
-                result.push("I");
-                break;
-            case x[i] == 2:
-                result.push("II");
-                break;
-            case x[i] == 3 :
-                result.push("III");
-                break
-            case x[i] == 4 :
-                result.push("IV");
-                break;
-            case x[i] == 5 :
-                result.push("5");
-                break;
-            case x[i] == 9:
-                result.push("IX")
+function decimals(input_value) {
+    let result = [];
+      while( input_value > 0 ){
+
+        if(input_value <= 3){
+            result.push("I");
+            input_value --;
+        }else if( input_value == 4){
+            result.push("IV");
+            input_value -= 4;
+        }else if(input_value >= 5 && input_value != 9){
+            result.push("V");
+            input_value -= 5;
+        }else if( input_value == 9){
+            result.push("IX")
+            input_value -= 9;
         }
     }
+        return result;
 }
 
 
+
 function  roman(x){
+
     if(Number(x) < 4000){
+
     if(x.includes("e") && x.includes(".")){
-        return "pleas enter a valid number !";
-    }else{
-        let new_x = x.split('').map(num => num * 1)
+        return "pleas Enter a Valid Number !";
+    }
+    else if(Number(x) <= 0){
+        return "Please enter a number greater than or equal to 1.";
+    }else {
+        let new_x = x.split('').map(num => num * 1);
         
     }
-    }else{
+    }
+    else{
         return "Please enter a number less than or equal to 3999."
     }
 }
 
 btn.addEventListener("click", function(){
     const input = document.getElementById(`number`).value;
-    let x = Number(input);
+    let y = Number(input);
+    console.log(decimals(y));
 
 })
