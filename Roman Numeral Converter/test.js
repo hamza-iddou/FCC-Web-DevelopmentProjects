@@ -95,10 +95,6 @@ function roman(values){
         }else if(values > 999){
             moreM(values);
         }
-
-    
-   
-
     }else{
         return "Please enter a number less than or equal to 3999.";
     }
@@ -106,12 +102,19 @@ function roman(values){
     }
     }
 
+roman("3999");
 
-console.log(roman("3999"));
 
-console.log(moreMR);
-console.log(morCR);
-console.log(moreXR);
-console.log(decimalsR);
 
-// 
+let resault_affich = (String(moreMR)+String(morCR)+String(moreXR)+String(decimalsR)).split(",").join("");
+
+
+
+
+
+
+
+
+
+
+
