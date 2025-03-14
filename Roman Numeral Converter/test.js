@@ -102,12 +102,12 @@ function roman(values){
     }
     }
 
-roman("3999");
+roman("1253");
 
 
 
 let resault_affich = (String(moreMR)+String(morCR)+String(moreXR)+String(decimalsR)).split(",").join("");
-
+console.log(resault_affich)
 
 
 
