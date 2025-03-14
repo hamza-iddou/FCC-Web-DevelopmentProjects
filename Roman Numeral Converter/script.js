@@ -7,7 +7,7 @@ var moreXR = [];
 var morCR = [];
 var moreMR = [];
 
-var resault_affich = "";
+
 
 function decimals(input_value){
     while( input_value > 0 ){
@@ -101,11 +101,17 @@ function roman(values){
     }
     }
 
-    const input = document.getElementById(`number`).value;
 btn.addEventListener("click", function(){
-    console.log(input);
-    console.log(typeof(input));
+    const input = document.getElementById(`number`).value;
+
+    moreMR = [];
+    morCR = [];
+    moreXR = [];
+    decimalsR = [];
+
     roman(input)
-    resault_affich = (String(moreMR)+String(morCR)+String(moreXR)+String(decimalsR)).split(",").join("");
+    let resault_affich = (String(moreMR)+String(morCR)+String(moreXR)+String(decimalsR)).split(",").join("");
     output.textContent = resault_affich;
+    
+    
 })
