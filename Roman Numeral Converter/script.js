@@ -1,7 +1,7 @@
 const input = document.getElementById(`number`).value;
 const btn = document.getElementById(`convert-btn`);
 const output = document.getElementById(`output`);
-let romannu = ["I", "IV", "V", "IX", "X", "XL", "L", "XV", "C", "CD", "D", "CM", "M"];
+let romannu = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
 //              1     4    5    9     10    40   50    90   100  400   500   900  1000
 let result = [];
 
@@ -30,9 +30,11 @@ function decimals(input_value) {
 
 
 
-function  roman(x){
 
-    if(Number(x) < 4000){
+
+function roman(x){
+
+    if(x < 4000){
 
     if(x.includes("e") && x.includes(".")){
         return "pleas Enter a Valid Number !";
@@ -41,7 +43,9 @@ function  roman(x){
         return "Please enter a number greater than or equal to 1.";
     }else {
         let new_x = x.split('').map(num => num * 1);
-        
+        if(new_x.length < 1){
+            decimals(x);
+        }
     }
     }
     else{
@@ -52,6 +56,6 @@ function  roman(x){
 btn.addEventListener("click", function(){
     const input = document.getElementById(`number`).value;
     let y = Number(input);
-    console.log(decimals(y));
+    console.log(roman(y));
 
 })
