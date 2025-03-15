@@ -75,7 +75,7 @@ function moreC(input_value){
 
 function roman(values){
 
-    if(values.includes("e") || values.includes(".")){
+    if(values.includes("e") || values.includes(".") || values == ""){
         return "pleas Enter a Valid Number !";
     }else if(values <= 0){
         return "Please enter a number greater than or equal to 1." ;

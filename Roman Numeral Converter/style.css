@@ -39,5 +39,5 @@ body{
 .output p{
     font-size: 3rem;
     padding: 0px 20px;
-    
+    display: none;
 }

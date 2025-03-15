@@ -74,16 +74,11 @@ function moreM(input_value){
         }
     }
     moreX(input_value);
-    
+  
 }
 
 function roman(values){
 
-    if(values.includes("e") || values.includes(".")){
-        return "pleas Enter a Valid Number !";
-    }else if(values <= 0){
-        return "Please enter a number greater than or equal to 1." ;
-    }else{
     if(values < 4000){
         if(values < 10 ){
             decimals(values);
@@ -95,23 +90,32 @@ function roman(values){
         }else if(values > 999){
             moreM(values);
         }
-    }else{
-        return "Please enter a number less than or equal to 3999.";
     }
     }
-    }
+    
 
 btn.addEventListener("click", function(){
     const input = document.getElementById(`number`).value;
-
+    
+    
+     
     moreMR = [];
     morCR = [];
     moreXR = [];
     decimalsR = [];
+    if (input == "" || input.includes("e") || input.includes(".")){
+        output.textContent =  "Please enter a valid number";
 
+
+    }else if(input <= 0){
+        output.textContent =  "Please enter a number greater than or equal to 1";
+    }else if(input > 3999){
+        output.textContent =  "Please enter a number less than or equal to 3999";
+    }else{
     roman(input)
     let resault_affich = (String(moreMR)+String(morCR)+String(moreXR)+String(decimalsR)).split(",").join("");
     output.textContent = resault_affich;
-    
+}
+output.style.display = 'block';
     
 })
