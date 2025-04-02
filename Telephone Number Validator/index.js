@@ -9,10 +9,15 @@ function checkPhoneNumber(value) {
 }
 
 checkbtn.addEventListener("click", () => {
-    const input = document.getElementById("user-input").value.trim();
+    let inputField = document.getElementById("user-input")
+    let input = inputField.value.trim();
     checkPhoneNumber(input)
-    result =  checkPhoneNumber(input)
-    
-
+    result.innerHTML +=  checkPhoneNumber(input) + "<br>";
+    inputField.value = "";
 });
+
+clear.addEventListener("click", ()=>{
+    result.textContent =  "";
+})
+
 
