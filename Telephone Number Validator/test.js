@@ -33,35 +33,36 @@ function checkbraquet(value){
 }
 }
 
-function checkspace(value){
+function checkSpace(value){
     let cpt = 0;
-    let new_string = "";
-    let new_array = []
-    for(let i = 0 ; i <= value.length-1 ; i++){
+    let arr = []
+    for(let i = 0 ; i <= value.length-1; i++){
         if(value[i] != ")" && value[i] != "(" && value[i] != "-" && value[i] != " "){
-            cpt ++
+            cpt++
         }
     }
+    arr = value.split("")
     if(cpt > 10){
-        new_array = value.split("")
-        new_array.splice(0, 1);
-        if(new_array[0] = " "){
-            new_array.splice(0, 1);
-        }
-    }else{
-        new_array = value.split("")
+        arr.splice(0,1)
     }
-    for(let i = 0; i<= value.length-1 ; i++){
-        if(value[i] = " " && value[i+1]!=" "){
-            return true
-        }else{
-            return false
+    if(arr[0] = " "){
+        arr.splice(0,1)
+    }
+    for(let i = 0; arr.length-1; i++){
+        if(arr[i] != " " || arr[i].charCodeAt(0) <= 45){
+            arr.splice(i,1);
+            i--;
         }
     }
+    return arr
+    
+    
 }
 
 
 
-console.log(checkspace(input))
+
+
+console.log(checkSpace(input))
 
 
