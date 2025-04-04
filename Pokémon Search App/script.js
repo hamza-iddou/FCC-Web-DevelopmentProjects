@@ -11,13 +11,13 @@ const pokemon_name = document.getElementById(`pokemon-name`);
 const pokemon_id = document.getElementById(`pokemon-id`);
 const weight = document.getElementById(`weight`);
 const height = document.getElementById(`height`);
-const type = document.getElementById(`type`);
+const type = document.getElementById(`types`);
 const pimg = document.getElementById(`pokemonimag`);
 
 
 
 searchbutton.addEventListener("click", async()=>{
-    let id = searchinput.value
+    let id = searchinput.value.trim().toLowerCase();
     url = url+id
     
     const data = await fetchdata(url);
