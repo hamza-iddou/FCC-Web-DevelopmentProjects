@@ -1,0 +1,51 @@
+body{
+    text-align: center;
+}
+.card-result{
+    min-height: 500px;
+    background-color: white;
+    max-width: 600px;
+    margin: 30px auto;
+}
+.card-result p{
+    margin: 1px;
+    margin-right: 500px;
+    padding: 0;
+}
+.card-result span{
+    margin: 1px;
+    margin-right: 500px;
+    padding: 0;
+}
+.container{
+    background-color: blueviolet;
+}
+.card-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-body .Base h4{
+    background-color: rgb(181, 106, 252);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px 5px;
+}
+.card-body .Base p{
+    background-color: rgb(181, 106, 252);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px 5px;
+}
+.card-body .Stats h4{
+    background-color: rgb(181, 106, 252);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px 5px;
+} 
+.card-body .Stats p{
+    background-color: rgb(181, 106, 252);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px 5px;
+} 
