@@ -106,31 +106,66 @@ function calculateChange(value) {
     totalin()
     return exchange;
 }
-console.log(Number(totalin().toFixed(2))+price)
+
 
 purchase_btn.addEventListener("click", () => {
-    let cash_value = Number(cash.value)
+    let cash_value = Number(cash.value);
+
+    exchange = [
+        ['PENNY', 0],
+        ['NICKEL', 0],
+        ['DIME', 0],
+        ['QUARTER', 0],
+        ['ONE', 0],
+        ['FIVE', 0],
+        ['TEN', 0],
+        ['TWENTY', 0],
+        ['ONE HUNDRED', 0]
+    ];
+    change_due.innerHTML = "";
     if (cash_value < price && cash_value != "") {
-        change_due.innerHTML = "<p>Customer does not have enough money to purchase the item</p><br>";
+        alert("Customer does not have enough money to purchase the item");
     } else {
-                if(cash_value < Number(totalin().toFixed(2))+price){
+        if((cash_value < Number(totalin().toFixed(2)) + price) && cash_value > price){
+            calculateChange(cash_value);
+            change_due.innerHTML = `<p>Status: OPEN</p>`;
+            for (let i = exchange.length - 1; i >= 0; i--){
+                if (exchange[i][1] > 0) {
+                    let value = exchange[i][1];
+                
+                    if (value % 1 === 0) {  
+                        change_due.innerHTML += `<p>${exchange[i][0]} : $${value}</p>`;
+                    } else if (value <= 0.04) { 
+                        change_due.innerHTML += `<p>${exchange[i][0]} : $${value.toFixed(2)}</p>`;
+                    } else if (value >= 0.1) {  
+                        change_due.innerHTML += `<p>${exchange[i][0]} : $${value.toFixed(1)}</p>`;
+                    } else {  
+                        change_due.innerHTML += `<p>${exchange[i][0]} : $${Math.floor(value)}</p>`;
+                    }
+                }
+                    }
+                }else if((cash_value == Number(totalin().toFixed(2))+price) && cash_value > price){
                     calculateChange(cash_value);
-                    change_due.innerHTML = `<h3>Status: OPEN</h3>`;
+                    change_due.innerHTML = `<p>Status: CLOSED</p>`;
                     for (let i = exchange.length - 1; i >= 0; i--) {
                         if (exchange[i][1] > 0) {
-                            change_due.innerHTML += `<ol>${exchange[i][0]} : ${(exchange[i][1].toFixed(2))}</ol>`
+                            let value = exchange[i][1];
+                            if (value % 1 === 0) {  
+                                change_due.innerHTML += `<p>${exchange[i][0]} : $${value}</p>`;
+                            } else if (value <= 0.04) { 
+                                change_due.innerHTML += `<p>${exchange[i][0]} : $${value.toFixed(2)}</p>`;
+                            } else if (value >= 0.5) {  
+                                change_due.innerHTML += `<p>${exchange[i][0]} : $${value.toFixed(1)}</p>`;
+                            } else {  
+                                change_due.innerHTML += `<p>${exchange[i][0]} : $${Math.floor(value)}</p>`;
+                            }
                         }
-                    }
-                }else if(cash_value == Number(totalin().toFixed(2))+price){
-                    calculateChange(cash_value);
-                    change_due.innerHTML = `<h3>Status: CLOSED</h3>`;
-                    for (let i = exchange.length - 1; i >= 0; i--) {
-                        if (exchange[i][1] > 0) {
-                            change_due.innerHTML += `<ol>${exchange[i][0]} : ${(exchange[i][1].toFixed(2))}</ol>`
-                        }
-                    }
-                }else{
-                    change_due.innerHTML = `<h3>Status: INSUFFICIENT_FUNDS</h3>`;
+                            }
+                }else if(cash_value === price){
+                    change_due.innerHTML = `<p>No change due - customer paid with exact cash<p>`;
+                }
+                else{
+                    change_due.innerHTML = `<p>Status: INSUFFICIENT_FUNDS</p>`;
                 }
             }
         }
