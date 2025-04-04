@@ -1,5 +1,5 @@
-let price = 1.87;
-let totalcid = 335.41;
+let price = 3.26;
+let totalcid = 0;
 let cid = [
   ['PENNY', 1.01], //0
   ['NICKEL', 2.05],//1
@@ -12,13 +12,23 @@ let cid = [
   ['ONE HUNDRED', 100] //8
 ];
 
+function totalin(){
+    
+    for(let i = 0; i <= cid.length-1 ; i++){
+        totalcid += cid[i][1];
+    }
+    return totalcid.toFixed(2);
+}
+console.log(Number(totalin()))
 
 const olElements = document.querySelectorAll(".ol"); 
 const cash = document.getElementById(`cash`);
 const change_due = document.getElementById(`change-due`);
 const purchase_btn = document.getElementById(`purchase-btn`);
 const total = document.getElementById(`total`);
+total.textContent = `Total : ${price}$`;
 updateUi()
+
 var exchange = [
     ['PENNY', 0], //0
   ['NICKEL', 0],//1
@@ -31,7 +41,6 @@ var exchange = [
   ['ONE HUNDRED', 0]
 ]; 
 
-
 function updateUi(){
 olElements.forEach((ol, index) => {
     if (cid[index]) { 
@@ -43,15 +52,15 @@ olElements.forEach((ol, index) => {
 function calculateChange(value) {
     let back = value - price;
     while (back > 0) {
-        if (back >= 100 && cid[8][1] >= 100) {
+        if (back >= 100 && cid[8][1] >= 100){
             back = (back - 100).toFixed(2);
-            cid[8][1] -= 100;
+            cid[8][1] -=   100;
             exchange[8][1] += 100
 
         } else if (back >= 20 && cid[7][1] >= 20) {
             back = (back - 20).toFixed(2);
             cid[7][1] -= 20;
-            exchange[7][1] += 20
+            exchange[7][1] += 20;
 
         } else if (back >= 10 && cid[6][1] >= 10) {
             back = (back - 10).toFixed(2);
@@ -60,18 +69,18 @@ function calculateChange(value) {
 
         } else if (back >= 5 && cid[5][1] >= 5) {
             back = (back - 5).toFixed(2);
-            cid[5][1] -= 5;
-            exchange[5][1] += 5
+            cid[5][1] -=5;
+            exchange[5][1] += 5;
 
         } else if (back >= 1 && cid[4][1] >= 1) {
             back = (back - 1).toFixed(2);
             cid[4][1] -= 1;
-            exchange[4][1] += 1
+            exchange[4][1] += 1;
 
         } else if (back >= 0.25 && cid[3][1] >= 0.25) {
             back = (back - 0.25).toFixed(2);
             cid[3][1] -= 0.25;
-            exchange[3][1] += 0.25
+            exchange[3][1] += 0.25;
 
         } else if (back >= 0.1 && cid[2][1] >= 0.1) {
             back = (back - 0.1).toFixed(2);
@@ -81,28 +90,27 @@ function calculateChange(value) {
         } else if (back >= 0.05 && cid[1][1] >= 0.05) {
             back = (back - 0.05).toFixed(2);
             cid[1][1] -= 0.05;
-            exchange[1][1] += 0.05
+            exchange[1][1] += 0.05;
 
         } else if (back >= 0.01 && cid[0][1] >= 0.01) {
             back = (back - 0.01).toFixed(2);
             cid[0][1] -= 0.01;
-            exchange[0][1] += 0.01
-
+            exchange[0][1] += 0.01;
         } else {
-            console.log("Not enough change available.");
-            return;
+            return false;
         }
     }
     updateUi()
+    totalin()
     return exchange;
 }
 
-total.textContent = `Total : ${price}$`;
 purchase_btn.addEventListener("click", ()=>{
     let cash_value = Number(cash.value)
     if(cash_value < price && cash_value != ""){
         change_due.innerHTML = "<p>Customer does not have enough money to purchase the item</p><br>";
     }else{
+        if(cash_value <= totalin()){
         calculateChange(cash_value);
         change_due.innerHTML = `<h3>Status: OPEN</h3>`;
         for(let i = exchange.length-1; i >= 0 ; i--){
@@ -110,16 +118,6 @@ purchase_btn.addEventListener("click", ()=>{
                 change_due.innerHTML += `<ol>${exchange[i][0]} : ${exchange[i][1]}</ol>`
             }
         }
-        
-
-        
+    }
     }
 })
-
-
-
-
-
-
-
-
